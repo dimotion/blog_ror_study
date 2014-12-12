@@ -1,0 +1,23 @@
+<h1>Posts List</h1>
+
+<ul>
+  <% @posts.each do |post| %>
+
+  <li>
+    <p> <%= link_to post.title, post_path(post) %> created by <%= post.user.try(:login) %> </p>
+    <p> It has <%= pluralize(post.comments.count, "comment") %>  </p>
+  </li>
+
+  <span>
+    <%= link_to 'Edit Post', edit_post_path(post) %> |
+  </span>
+
+  <span>
+    <%= link_to 'Delete Post', post_path(post),
+      method: :delete, data: {confirm: 'Are you sure?'} %>
+  </span>
+
+  <% end %>
+</ul>
+
+<%= link_to 'New Post', new_post_path %>

@@ -1,0 +1,9 @@
+<div id="com">
+  <% commentable.comments.each do |comment| %>
+    <p>
+      <%= render "comments/comment", comment: comment %>
+    </p>
+ <% end %>
+</div>
+
+<%= render "comments/form", commentable: commentable %>
